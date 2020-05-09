@@ -6,6 +6,9 @@
   "scripts": {
     "start": "node bot.js",
     "lint": "eslint ./",
+    "deploy": "serverless deploy",
+    "deploy:prod": "serverless deploy --stage prod",
+    "deploy:all": "yarn run deploy && yarn run deploy:prod",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
@@ -13,7 +16,8 @@
     "botbuilder-storage-mongodb": "^0.9.5",
     "botkit": "^4.6.2",
     "botkit-plugin-cms": "^1.0.3",
-    "dotenv": "^7.0.0"
+    "dotenv": "^7.0.0",
+    "restify": "^8.5.1"
   },
   "devDependencies": {
     "eslint": "^6.8.0"
