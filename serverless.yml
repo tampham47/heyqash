@@ -29,4 +29,10 @@ functions:
           method: post
           cors: true
     environment:
+      VERIFICATION_TOKEN: ${file(./.config.${self:provider.stage}.json):STAGE}
+      CLIENT_SIGNING_SECRET: ${file(./.config.${self:provider.stage}.json):CLIENT_SIGNING_SECRET}
+      BOT_TOKEN: ${file(./.config.${self:provider.stage}.json):BOT_TOKEN}
+      CLIENT_ID: ${file(./.config.${self:provider.stage}.json):CLIENT_ID}
+      CLIENT_SECRET: ${file(./.config.${self:provider.stage}.json):CLIENT_SECRET}
+      REDIRECT_URI: ${file(./.config.${self:provider.stage}.json):REDIRECT_URI}
       STAGE: ${file(./.config.${self:provider.stage}.json):STAGE}
