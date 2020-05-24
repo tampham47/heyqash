@@ -36,7 +36,7 @@ adapter.use(new SlackEventMiddleware());
 // Use SlackMessageType middleware to further classify messages as direct_message, direct_mention, or mention
 adapter.use(new SlackMessageTypeMiddleware());
 
-module.exports.message = async event => {
+module.exports.message = async (event) => {
   const body = JSON.parse(event.body);
   console.log('body', body);
 
