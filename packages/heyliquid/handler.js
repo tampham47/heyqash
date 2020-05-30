@@ -1,5 +1,5 @@
 const { WebClient } = require('@slack/web-api');
-const getFirebase = require('./getFirebase');
+const getFirebase = require('@heyliquid/shared/getFirebase');
 
 const firebase = getFirebase();
 const db = firebase.firestore();

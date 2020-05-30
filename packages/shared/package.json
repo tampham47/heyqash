@@ -1,0 +1,15 @@
+{
+  "name": "@heyliquid/shared",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "tampham47",
+  "license": "ISC",
+  "dependencies": {
+    "@slack/web-api": "^5.9.0",
+    "firebase-admin": "^8.12.1"
+  }
+}

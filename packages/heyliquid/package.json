@@ -10,8 +10,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@slack/web-api": "^5.9.0",
-    "firebase-admin": "^8.12.1"
+    "@heyliquid/shared": "^0.1.0",
+    "@slack/web-api": "^5.9.0"
   },
   "author": "tampham47",
   "license": "ISC"

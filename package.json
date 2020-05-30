@@ -16,7 +16,7 @@
       "packages/*"
     ],
     "nohoist": [
-      "**/hey*/**"
+      "**/@hey*/**"
     ]
   },
   "devDependencies": {
