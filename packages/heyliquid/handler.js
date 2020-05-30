@@ -10,7 +10,7 @@ const apiResult = (statusCode, payload) => {
 
   return {
     statusCode,
-    body: JSON.stringify({ payload }),
+    body: JSON.stringify(payload),
   };
 };
 

@@ -1,0 +1,38 @@
+# Welcome to Serverless!
+#
+# This file is the main config file for your service.
+# It's very minimal at this point and uses default values.
+# You can always add more config options for more control.
+# We've included some commented out config examples here.
+# Just uncomment any of them to get that config option.
+#
+# For full config options, check the docs:
+#    docs.serverless.com
+#
+# Happy Coding!
+
+service: heyapis
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: ap-southeast-1
+  stage: ${opt:stage, 'dev'}
+  timeout: 10
+
+functions:
+  logs:
+    handler: handler.logs
+    events:
+      - http:
+          path: api/logs
+          method: get
+    environment:
+      VERIFICATION_TOKEN: ${file(../../.config.${self:provider.stage}.json):STAGE}
+      CLIENT_SIGNING_SECRET: ${file(../../.config.${self:provider.stage}.json):CLIENT_SIGNING_SECRET}
+      BOT_TOKEN: ${file(../../.config.${self:provider.stage}.json):BOT_TOKEN}
+      CLIENT_ID: ${file(../../.config.${self:provider.stage}.json):CLIENT_ID}
+      CLIENT_SECRET: ${file(../../.config.${self:provider.stage}.json):CLIENT_SECRET}
+      REDIRECT_URI: ${file(../../.config.${self:provider.stage}.json):REDIRECT_URI}
+      SLACK_TOKEN: ${file(../../.config.${self:provider.stage}.json):SLACK_TOKEN}
+      STAGE: ${file(../../.config.${self:provider.stage}.json):STAGE}
