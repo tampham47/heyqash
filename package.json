@@ -1,17 +1,38 @@
 {
   "name": "botkit-heyqash",
   "version": "1.0.0",
+  "private": true,
   "description": "",
   "main": "bot.js",
   "scripts": {
-    "start": "node bot.js",
+    "lint": "eslint ./",
+    "deploy": "serverless deploy",
+    "deploy:prod": "serverless deploy --stage prod",
+    "deploy:all": "yarn run deploy && yarn run deploy:prod",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "botbuilder-adapter-slack": "^1.0.10",
-    "botbuilder-storage-mongodb": "^0.9.5",
-    "botkit": "^4.6.2",
-    "botkit-plugin-cms": "^1.0.3",
-    "dotenv": "^7.0.0"
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/hey*/**"
+    ]
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.3",
+    "prettier": "^2.0.5",
+    "eslint": "^6.8.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.6"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts}": "eslint --fix"
   }
 }
