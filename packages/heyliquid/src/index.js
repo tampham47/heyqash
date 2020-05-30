@@ -5,6 +5,7 @@
 
 const restify = require('restify');
 const path = require('path');
+const getFirebase = require('./getFirebase');
 
 // Import required bot services. See https://aka.ms/bot-services to learn more about the different part of a bot
 const {
@@ -107,6 +108,7 @@ const memoryStorage = new MemoryStorage();
 // Create conversation state with in-memory storage provider.
 const conversationState = new ConversationState(memoryStorage);
 const userState = new UserState(memoryStorage);
+const firebase = getFirebase();
 
 // Listen for incoming requests.
 server.post('/api/messages', (req, res) => {
