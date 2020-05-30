@@ -35,4 +35,5 @@ functions:
       CLIENT_ID: ${file(../../.config.${self:provider.stage}.json):CLIENT_ID}
       CLIENT_SECRET: ${file(../../.config.${self:provider.stage}.json):CLIENT_SECRET}
       REDIRECT_URI: ${file(../../.config.${self:provider.stage}.json):REDIRECT_URI}
+      SLACK_TOKEN: ${file(../../.config.${self:provider.stage}.json):SLACK_TOKEN}
       STAGE: ${file(../../.config.${self:provider.stage}.json):STAGE}

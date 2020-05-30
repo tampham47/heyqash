@@ -1,6 +1,7 @@
 {
   "name": "botkit-heyqash",
   "version": "1.0.0",
+  "private": true,
   "description": "",
   "main": "bot.js",
   "scripts": {
@@ -9,6 +10,14 @@
     "deploy:prod": "serverless deploy --stage prod",
     "deploy:all": "yarn run deploy && yarn run deploy:prod",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/hey*/**"
+    ]
   },
   "devDependencies": {
     "eslint-config-prettier": "^6.11.0",
