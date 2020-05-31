@@ -1,5 +1,6 @@
 const { v4: uuidv4 } = require('uuid');
 const { WebClient } = require('@slack/web-api');
+const parseMessage = require('./utils/parseMessage');
 const apiResult = require('@heyliquid/shared/apiResults');
 const {
   Logs,
@@ -13,6 +14,7 @@ const web = new WebClient(process.env.SLACK_TOKEN);
 module.exports.message = async (event) => {
   const body = JSON.parse(event.body);
   const message = body.event;
+  console.log('body', body);
 
   // Due to one event can be triggered multiple times
   // hence we need to check before taking any further actions
@@ -62,25 +64,41 @@ module.exports.message = async (event) => {
       return apiResult(200, { message: 'MessageId is not available.' });
     }
 
-    const txId = uuidv4();
-    const payload = {
-      id: txId,
-      from: message.user,
-      to: '---',
-      value: 0,
-      note: body.event.text,
-      status: '',
-      transactionFee: 0,
-      timestamp: new Date().getTime(),
-      messageId,
-      _user: user,
-    };
+    const prdMessage = parseMessage(body);
+    if (!prdMessage.isValid) {
+      return apiResult(200, {
+        message: 'Message is not valid',
+        prdMessage,
+      });
+    }
 
-    const tx = await Transactions.doc(txId).set(payload);
+    const txList = [];
+
+    for (let i = 0; i < prdMessage.targetUserList.length; i++) {
+      const u = prdMessage.targetUserList[i];
+      const txId = uuidv4();
+      const payload = {
+        id: txId,
+        from: message.user,
+        to: u.user_id,
+        value: parseFloat(prdMessage.pointPerUser),
+        note: body.event.text,
+        status: 'success',
+        transactionFee: 0,
+        messageId,
+        timestamp: new Date().getTime(),
+        classify: '',
+        // _from: user,
+        // _to: user,
+      };
+
+      const tx = await Transactions.doc(txId).set(payload);
+      txList.push(tx);
+    }
 
     return apiResult(200, {
-      message: 'success',
-      tx,
+      message: 'Ok',
+      txList,
     });
   }
 
