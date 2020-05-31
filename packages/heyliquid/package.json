@@ -12,6 +12,7 @@
   "dependencies": {
     "@heyliquid/shared": "^0.1.0",
     "@slack/web-api": "^5.9.0",
+    "jest": "^26.0.1",
     "uuid": "^8.1.0"
   },
   "author": "tampham47",

@@ -12,6 +12,7 @@
   "author": "tampham47",
   "license": "ISC",
   "dependencies": {
-    "@heyliquid/shared": "^0.1.0"
+    "@heyliquid/shared": "^0.1.0",
+    "jest": "^26.0.1"
   }
 }

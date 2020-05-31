@@ -9,7 +9,7 @@
   "author": "tampham47",
   "license": "ISC",
   "dependencies": {
-    "@slack/web-api": "^5.9.0",
-    "firebase-admin": "^8.12.1"
+    "firebase-admin": "^8.12.1",
+    "jest": "^26.0.1"
   }
 }
