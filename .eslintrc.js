@@ -6,6 +6,7 @@ module.exports = {
     commonjs: true,
     node: true,
     es6: true,
+    jest: true,
   },
   globals: {
     process: 'readonly',

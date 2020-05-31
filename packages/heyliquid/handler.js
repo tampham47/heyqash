@@ -10,6 +10,10 @@ const {
 
 const web = new WebClient(process.env.SLACK_TOKEN);
 
+module.exports.parseMessage = (message) => {
+  return message.id;
+};
+
 module.exports.message = async (event) => {
   const body = JSON.parse(event.body);
   const message = body.event;

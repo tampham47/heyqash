@@ -9,7 +9,8 @@
     "deploy": "serverless deploy",
     "deploy:prod": "serverless deploy --stage prod",
     "deploy:all": "yarn run deploy && yarn run deploy:prod",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test:watch": "jest --watch",
+    "test": "jest"
   },
   "workspaces": {
     "packages": [
